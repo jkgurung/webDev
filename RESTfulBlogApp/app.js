@@ -1,5 +1,5 @@
 var bodyParser   = require("body-parser"),
-expressSanitizer = require("express-sanitizer"),
+// expressSanitizer = require("express-sanitizer"),
 methodOverride   = require("method-override"),
 mongoose         = require("mongoose"),
 express          = require("express"),
@@ -11,7 +11,7 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
 // make sure this is after body-parser
-app.use(expressSanitizer);
+// app.use(expressSanitizer);
 app.use(methodOverride("_method"));
 
 
@@ -43,7 +43,7 @@ app.get("/blogs", function(req, res) {
         } else {
             res.render("index", {blogs: blogs});
         }
-    })
+    });
 });
 
 // NEW ROUTE
@@ -116,6 +116,6 @@ app.delete("/blogs/:id", function(req, res) {
 });
 
 
-app.listen(5000, function() {
+app.listen(3000, function() {
     console.log("BlogApp Server Started!!!");
 });
